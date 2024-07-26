@@ -7,7 +7,7 @@
 
 ul {
   list-style: none;
-};
+}
 
 :root {
   font-family: sans-serif;
@@ -46,7 +46,7 @@ body {
     background-color: rgb(218, 205, 188);
   }
   button {
-    background-color: rgb(218, 205, 188);;
+    background-color: rgb(218, 205, 188);
     border-color: #f9f9f9;
   }
   button:hover {
@@ -55,13 +55,12 @@ body {
   a:hover {
     color: #81d2f1;
   }
-
 }
 
 @media (prefers-color-scheme: dark) {
   body {
     color: #cccccc;
-    background-color: #1a1a1a
+    background-color: #1a1a1a;
   }
   button {
     background-color: #1a1a1a;

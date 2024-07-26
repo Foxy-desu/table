@@ -21,9 +21,8 @@
 .controlls {
   box-sizing: border-box;
   width: 100%;
-  padding: 2rem 0 1rem ;
+  padding: 2rem 0 1rem;
   display: flex;
-  
 }
 
 .controlls__search-bar {
@@ -93,7 +92,7 @@
 .search-bar__input:focus,
 .search-bar__input:focus-visible,
 .search-bar__select:focus,
-.search-bar__select:focus-visible{
+.search-bar__select:focus-visible {
   border: 1px solid #41737f;
   outline: 1px solid #41737f;
 }
@@ -123,7 +122,6 @@
 .table td {
   text-align: center;
   padding: 0.5rem;
-
 }
 
 .table__head {
@@ -132,7 +130,7 @@
 }
 
 .table__head th:nth-child(2n + 2) {
-  background-color:  rgb(35, 49, 56);
+  background-color: rgb(35, 49, 56);
 }
 
 .table__body tr {
@@ -140,7 +138,7 @@
   font-size: 1rem;
 }
 
-.table__body tr:nth-child(2n+2) {
+.table__body tr:nth-child(2n + 2) {
   background-color: rgb(42, 56, 63);
 }
 
@@ -156,4 +154,3 @@
 .table-wrap {
   overflow-x: auto;
 }
-
