@@ -1,6 +1,6 @@
 import Table from "../table";
 
-const TableModel = ({ users = {}}) => {
+const TableModel = ({ users = {}, openModal}) => {
   const columnTitles = ["фио", "возраст", "пол", "номер телефона", "адрес"];
   function renderTableColumnTitles(titles) {
     if (titles.length > 0) {
@@ -20,7 +20,7 @@ const TableModel = ({ users = {}}) => {
         const city = address.city;
         const street = address.address;
         return (
-          <tr key={user.id}>
+          <tr key={user.id} onClick={()=> {openModal(user)}}>
             <td>
               {firstName}
               <br />
