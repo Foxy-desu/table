@@ -157,6 +157,7 @@
 
 .table__body tr:hover {
   color: rgb(93, 140, 161);
+  cursor: pointer;
 }
 
 .table td:not(:last-child),
@@ -170,6 +171,7 @@
 
 .pagination {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 5px;
   margin-top: 1rem;
@@ -182,4 +184,49 @@
 .pagination__btn--active:hover {
   border-color: transparent;
   cursor: default;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 10;
+}
+
+.modal__content {
+  padding: 1rem 1rem 1rem;
+  background-color: #05151a;
+  border-radius: 25px;
+  font-size: clamp(15px, 2vw, 1.2rem);
+}
+
+.modal__data-list {
+  padding-bottom: 0.8rem;
+}
+
+.modal__content-item {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px dashed #41737f;
+  padding: 1rem 0;
+}
+
+.modal__content-title {
+  text-transform: capitalize;
+  margin-right: 1rem;
+}
+
+.modal__content-data {
+  flex-grow: 1;
+  flex-shrink: 2;
+  text-align: end;
+  flex-wrap: wrap;
 }
