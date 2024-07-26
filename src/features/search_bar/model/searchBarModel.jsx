@@ -16,7 +16,7 @@ const SearchBarModel = ({ fetchData }) => {
   const [option, setOption] = useState("");
 
   function requestData() {
-    if (option && searchQuery) {
+    if (option) {
       const trimmed = searchQuery.trim();
       fetchData(trimmed, option);
     }

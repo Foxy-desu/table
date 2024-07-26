@@ -36,8 +36,13 @@ export const useFetch =({limit})=> {
 
   // Fetch data when search button is clicked along with chosen option for data search
   function fetchDataOnSearch(queryString, keyOption) {
-    const params = `key=${encodeURIComponent(keyOption)}&value=${encodeURIComponent(queryString)}`;
-    fetchData(URL, 'search', params);
+    if (queryString){
+      const params = `key=${encodeURIComponent(keyOption)}&value=${encodeURIComponent(queryString)}`;
+      fetchData(URL, 'search', params);
+    } else {
+      const params = `limit=${limit}&skip=${offset}`
+      fetchData(URL, 'fetch', params);
+    }
   }
 
   return {

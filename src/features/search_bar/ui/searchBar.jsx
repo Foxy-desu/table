@@ -34,7 +34,8 @@ const SearchBar = ({
       <button
         className="search-bar__btn"
         onClick={handleBtnClick}
-        disabled={inputValue ? false : true}
+        disabled={currentOption ? false : true}
+        title={currentOption || 'Выберите параметр поиска'}
       >
         <span className="mask"></span>
         <span className="visually-hidden">Поиск</span>
