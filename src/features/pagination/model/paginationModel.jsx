@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Pagination from "../ui/pagination";
 
 const PaginationModel =({setOffset, totalItemsCount, limit})=> {
@@ -6,7 +6,6 @@ const PaginationModel =({setOffset, totalItemsCount, limit})=> {
   const pagesAmount = useMemo(()=> {
     return getPagesAmount(totalItemsCount, limit)
   }, [totalItemsCount, limit]);
-
   function getPagesAmount(itemsCount, limit) {
     return Math.ceil(itemsCount / limit);
   }
@@ -16,10 +15,16 @@ const PaginationModel =({setOffset, totalItemsCount, limit})=> {
     return (currPage -1) * ItemsOnPage
   }
   function handleCurrentPageChange(page){
-    setCurrentPage(page);
     setOffset(getCurrentPageOffset(page, limit));
+    setCurrentPage(page);
   }
 
+  useEffect(()=> {
+    if(currentPage > pagesAmount) {
+      setCurrentPage(pagesAmount);
+      setOffset(getCurrentPageOffset(pagesAmount, limit));
+    }
+  }, [pagesAmount])
 
   return (
     <>

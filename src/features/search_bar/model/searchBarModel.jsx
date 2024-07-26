@@ -18,7 +18,7 @@ const SearchBarModel = ({ fetchData }) => {
   function requestData() {
     if (option) {
       const trimmed = searchQuery.trim();
-      fetchData(trimmed, option);
+      fetchData({key:option, value:trimmed});
     }
   }
   function changeQuery(e) {

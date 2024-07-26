@@ -1,25 +1,24 @@
 import { useEffect, useState } from "react";
 
 export const useFetch =({limit})=> {
-  const URL = "https://dummyjson.com/users";
+  const BASE_URL = "https://dummyjson.com/users";
   const [users, setUsers] = useState({});
   const [offset, setOffset] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
-
+  const [filter, setFilter]=useState({key:'', value: ''});
 
   // Functions to construct URL based on purpose and params
-  function getFullURL({url, purpose, params}) {
-    switch (purpose) {
-      case 'search': {
-        return url += "/filter?" + params;
-      };
-      case 'fetch': {
-        return url += "?" + params
-      };
+  function getFullURL({url, offset, limit, filter}) {
+    const paginationParams = `limit=${limit}&skip=${offset}`;
+    const filterParams = `key=${encodeURIComponent(filter.key)}&value=${encodeURIComponent(filter.value)}`;
+    if(filter.value) {
+      return `${url}/filter?${filterParams}&${paginationParams}`;
+    } else { 
+      return `${url}?${paginationParams}`;
     }
   }
-  function fetchData(url, purpose, params) {
-    const fullURL = getFullURL({purpose, params, url});
+  function fetchData(url, offset, limit, filter) {
+    const fullURL = getFullURL({url, offset, limit, filter});
     fetch(fullURL)
       .then((res) => res.json())
       .then((data) => {
@@ -27,22 +26,13 @@ export const useFetch =({limit})=> {
         setTotalItems(data.total)
       });
   }
-
   // Fetch data on component mount and offsetChange
   useEffect(() => {
-    const params = `limit=${limit}&skip=${offset}`
-    fetchData(URL, 'fetch', params);
-  }, [offset]);
-
+    fetchData(BASE_URL, offset, limit, filter)
+  }, [offset, filter]);
   // Fetch data when search button is clicked along with chosen option for data search
-  function fetchDataOnSearch(queryString, keyOption) {
-    if (queryString){
-      const params = `key=${encodeURIComponent(keyOption)}&value=${encodeURIComponent(queryString)}`;
-      fetchData(URL, 'search', params);
-    } else {
-      const params = `limit=${limit}&skip=${offset}`
-      fetchData(URL, 'fetch', params);
-    }
+  function fetchDataOnSearch({key, value}) {
+    setFilter({key, value});
   }
 
   return {
