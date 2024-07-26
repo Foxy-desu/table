@@ -20,7 +20,9 @@ const PaginationModel =({setOffset, totalItemsCount, limit})=> {
   }
 
   useEffect(()=> {
-    if(currentPage > pagesAmount) {
+    //fix situation when the current page's value is more than overall items count
+    //fires only when the current page is more than 1 (not to provoke paggination issues on inicialization)
+    if(currentPage > pagesAmount && currentPage > 1) {
       setCurrentPage(pagesAmount);
       setOffset(getCurrentPageOffset(pagesAmount, limit));
     }
