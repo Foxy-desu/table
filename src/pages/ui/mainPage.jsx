@@ -1,6 +1,7 @@
 import SearchBarModel from "../../features/search_bar/model/searchBarModel";
 import TableModel from "../../entities/table/model/tableModel";
 import PaginationModel from "../../features/pagination/model/paginationModel";
+import ModalModel from "../../entities/modal/model/modalModel";
 import cl from './mainPage.module.scss';
 
 const MainPage=({fetch, popup})=> {
