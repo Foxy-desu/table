@@ -154,3 +154,19 @@
 .table-wrap {
   overflow-x: auto;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 1rem;
+}
+
+.pagination__btn--active {
+  background-color: rgb(72, 122, 145);
+}
+
+.pagination__btn--active:hover {
+  border-color: transparent;
+  cursor: default;
+}

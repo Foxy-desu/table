@@ -3,24 +3,11 @@ import TableModel from "../entities/table/model/tableModel";
 import "./App.css";
 import { useEffect } from "react";
 import SearchBarModel from "../features/search_bar/model/searchBarModel.jsx";
+import { useFetch } from "./utils/useFetch.js";
+import PaginationModel from "../features/pagination/model/paginationModel.jsx";
 
 function App() {
-  const [users, setUsers] = useState({});
-  const URL = "https://dummyjson.com/users";
-  // const JSONPH = 'https://jsonplaceholder.typicode.com/users'
-
-  useEffect(() => {
-    fetch(URL)
-      .then((res) => res.json())
-      .then((data) => setUsers(data.users));
-  }, []);
-
-  function fetchDataOnSearch(queryString, keyOption) {
-    const params = `key=${encodeURIComponent(keyOption)}&value=${encodeURIComponent(queryString)}`;
-    fetch(URL + "/filter?" + params)
-      .then((res) => res.json())
-      .then((data) => setUsers(data.users));
-  }
+  const {users, totalItems, limit, setOffset, fetchDataOnSearch} = useFetch({limit:30});
 
   return (
     <div>
@@ -30,7 +17,10 @@ function App() {
         </div>
       </div>
       <div className="table-wrap">
-        <TableModel users={users} source={"Dummy"} />
+        <TableModel users={users}/>
+      </div>
+      <div>
+        <PaginationModel setOffset={setOffset} totalItemsCount={totalItems} limit={limit}/>
       </div>
     </div>
   );
