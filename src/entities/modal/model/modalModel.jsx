@@ -12,22 +12,9 @@ const ModalModel =({user, closeModal})=> {
     'почта': user.email
   }
 
-  function renderData(filtered) {
-    return Object.entries(filtered).map(([key,value]) => {
-      if(Array.isArray(value)) {
-        value = value.join(' ');
-      }
-      return (
-      <li key={key} className="modal__content-item">
-        <p className="modal__content-title">{key}</p>
-        <p className="modal__content-data">{value}</p>
-      </li>)
-  });
-  }
-
   return (
     <>
-      <Modal closeModal={closeModal} userListElems={renderData(userFiltered)}/>
+      <Modal closeModal={closeModal} user={userFiltered}/>
     </>
   )
 };
