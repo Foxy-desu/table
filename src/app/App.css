@@ -54,6 +54,15 @@
   }
 }
 
+.search-bar__btn[disabled] {
+  background-color: #242525;
+  cursor: default;
+}
+
+.search-bar__btn[disabled]:hover {
+  border-color: transparent;
+}
+
 .mask {
   display: block;
   width: 100%;
@@ -67,6 +76,10 @@
   -webkit-mask-position: center;
   mask-size: 64%;
   -webkit-mask-size: 64%;
+}
+
+.search-bar__btn[disabled] .mask {
+  background-color: #6e6e6e;
 }
 
 .search-bar__input {
